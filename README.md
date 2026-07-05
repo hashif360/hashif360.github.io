@@ -7,9 +7,33 @@ GitHub Pages. Editorial-minimal design, Markdown-driven posts.
 
 ## Writing a post
 
-Drop a Markdown file in [`src/content/blog/`](src/content/blog/) and push to `main`. See
-[`src/content/blog/README.md`](src/content/blog/README.md) for the frontmatter template. The
-deploy is automatic via GitHub Actions.
+1. Drop a Markdown file in [`src/content/blog/`](src/content/blog/) — see
+   [`src/content/blog/README.md`](src/content/blog/README.md) for the frontmatter template.
+2. Publish it:
+   ```bash
+   npm run deploy      # build + push the site live
+   ```
+   The site updates at https://hashif360.github.io within ~1 minute.
+
+## Auto-deploy (optional — publish by `git push` alone)
+
+A ready-to-use GitHub Actions workflow lives at `.github/workflows/deploy.yml`. It isn't active
+yet because pushing a workflow file needs an extra permission on the CLI token. To turn it on
+(one-time):
+
+```bash
+# 1. Grant the workflow scope (opens a browser / device prompt)
+gh auth refresh -h github.com -s workflow
+
+# 2. Commit and push the workflow
+git add .github && git commit -m "Enable auto-deploy" && git push
+
+# 3. Switch Pages to build from Actions
+gh api -X PUT repos/hashif360/hashif360.github.io/pages -f build_type=workflow
+```
+
+After that, every `git push` to `main` rebuilds and deploys automatically — no `npm run deploy`
+needed.
 
 ## Local development
 

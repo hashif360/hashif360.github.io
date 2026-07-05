@@ -1,7 +1,17 @@
 # How to publish a post
 
-Publishing is just **adding a Markdown file here and pushing to `main`**. GitHub Actions
-rebuilds and deploys the site automatically (usually live within ~1–2 minutes).
+Publishing is just **adding a Markdown file here and running one command**. Write the file,
+then from the project root run:
+
+```bash
+npm run deploy      # builds the site and publishes it live
+```
+
+The site updates at https://hashif360.github.io within ~1 minute.
+
+> **Optional upgrade — publish by `git push` alone:** an auto-deploy GitHub Action is included
+> at `.github/workflows/deploy.yml`. To enable it (one-time), see the "Auto-deploy" section in
+> the root [`README.md`](../../../README.md). After that, `git push` alone deploys.
 
 ## 1. Create a file
 
