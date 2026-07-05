@@ -71,6 +71,16 @@ middle of everything else was a grief I didn't have the tools for. Some losses d
 resolved; you just slowly learn to carry them, and to keep walking with the weight. I'm still
 learning.
 
+And it wasn't only my own grief I had to hold. My parents broke — completely, the way only
+parents who lose a child can break. I was still half a kid myself, and suddenly I was the one
+trying to hold up two people whose entire world had collapsed. I sat with them through it,
+listened to their sadness pour out in long, aching stories — about her, about life, about
+everything they were afraid of now. Those stories painted my picture of the world in colours I
+was far too young to be mixing. You grow up fast in a house like that. You learn what pain
+really costs, and how heavy love can be, and how to keep standing anyway because someone has to.
+I don't think I've ever fully put that weight down. But I've made a kind of peace with carrying
+it.
+
 ## Work, lockdown, and building my way back
 
 Life, indifferent and merciful in equal measure, kept moving. I started working — first at
