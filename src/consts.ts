@@ -11,10 +11,10 @@ export const SITE = {
 
 // Shown in the hero and about page. Add/remove freely.
 export const PROJECTS = [
-  { name: 'DoosraBox', href: '#', blurb: 'Instant, disposable cloud computers.' },
-  { name: 'Interviewable', href: '#', blurb: 'AI mock interviews that actually prep you.' },
-  { name: 'SayWhen', href: '#', blurb: 'Scheduling, minus the back-and-forth.' },
-  { name: 'Lesson21', href: '#', blurb: 'Bite-sized learning that sticks.' },
+  { name: 'DoosraBox', href: 'https://doosrabox.com', blurb: 'Instant, disposable cloud computers.' },
+  { name: 'Interviewable', href: 'https://interviewable.com', blurb: 'AI mock interviews that actually prep you.' },
+  { name: 'SayWhen', href: 'https://saywhen.me', blurb: 'Calendly, Linktree and a kanban board in one.' },
+  { name: 'Lesson21', href: 'https://lesson21.com', blurb: 'Bite-sized learning that sticks.' },
 ];
 
 export const SOCIALS = [

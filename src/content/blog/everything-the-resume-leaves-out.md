@@ -88,15 +88,29 @@ Life, indifferent and merciful in equal measure, kept moving. I started working 
 with the **COVID lockdown**, and a whole new kind of fear settled over everything.
 
 But that strange, suspended time also became, oddly, a turning point. Through the work-from-home
-years of **2020 to 2022**, I poured myself into building **[Lesson21](/about)** — and, just as
-importantly, into the harder and less visible project of working on *myself*. The old anxieties,
+years of **2020 to 2022**, I poured myself into building **[Lesson21](https://lesson21.com)** —
+and, just as importantly, into the harder and less visible project of working on *myself*. The old anxieties,
 the grief, the trauma I'd been carrying since childhood — I finally started facing them head-on.
 By 2022, I'd come out the other side of a lot of it. Not fixed, exactly. But lighter. More whole.
 
-I built through it all. A short-lived social platform for education called **Study Chat**.
-**[Interviewable](/about)**, which I worked on from 2021 all the way to 2025. The building was
-never separate from the healing — somehow they were the same act. Making things has always been
-how I make sense of being alive.
+I built through it all, and I never really stopped. A short-lived social platform for education
+called **Study Chat**. **[Interviewable](https://interviewable.com)**, which I worked on from 2021
+all the way to 2025. On a 2025 vacation I threw together **[SayWhen](https://saywhen.me)** as a
+quick experiment — a strange little mashup of Calendly, Linktree and a kanban board, built mostly
+to see if I could. And in 2026 came **[DoosraBox](https://doosrabox.com)**, easily the most
+complicated thing I've built outside of work.
+
+Underneath the named projects there was a constant, nameless churn of others — video-calling
+systems, WebRTC experiments, WebSocket servers, WhatsApp clones, more than I could ever list or
+even remember. The building was never separate from the healing; somehow they were the same act.
+Making things has always been how I make sense of being alive.
+
+And yet — sometimes I look back at all that toil, the nights and the weekends and the endless
+half-finished experiments, and I honestly don't know whether to feel proud or foolish. I see
+people who put in half the work I did land in far better places, and a quiet voice asks whether I
+got it all wrong, whether all that building was effort I should have spent on something easier or
+smarter. I don't have a clean answer. Maybe there isn't one. But I don't think I could have lived
+any other way — and I'm slowly learning to let that be enough.
 
 ## Here, now
 
