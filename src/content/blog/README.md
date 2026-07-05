@@ -9,9 +9,8 @@ npm run deploy      # builds the site and publishes it live
 
 The site updates at https://hashif360.github.io within ~1 minute.
 
-> **Optional upgrade — publish by `git push` alone:** an auto-deploy GitHub Action is included
-> at `.github/workflows/deploy.yml`. To enable it (one-time), see the "Auto-deploy" section in
-> the root [`README.md`](../../../README.md). After that, `git push` alone deploys.
+The site publishes from the `gh-pages` branch (free GitHub Pages branch deployment). See "How
+deploys work" in the root [`README.md`](../../../README.md) for details.
 
 ## 1. Create a file
 

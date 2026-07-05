@@ -15,25 +15,16 @@ GitHub Pages. Editorial-minimal design, Markdown-driven posts.
    ```
    The site updates at https://hashif360.github.io within ~1 minute.
 
-## Auto-deploy (optional — publish by `git push` alone)
+## How deploys work
 
-A ready-to-use GitHub Actions workflow lives at `.github/workflows/deploy.yml`. It isn't active
-yet because pushing a workflow file needs an extra permission on the CLI token. To turn it on
-(one-time):
+The site is published from the **`gh-pages` branch** (GitHub Pages "deploy from a branch" mode),
+which is free for public repos. `npm run deploy` builds `dist/` and pushes it there; GitHub serves
+it within ~1 minute.
 
-```bash
-# 1. Grant the workflow scope (opens a browser / device prompt)
-gh auth refresh -h github.com -s workflow
-
-# 2. Commit and push the workflow
-git add .github && git commit -m "Enable auto-deploy" && git push
-
-# 3. Switch Pages to build from Actions
-gh api -X PUT repos/hashif360/hashif360.github.io/pages -f build_type=workflow
-```
-
-After that, every `git push` to `main` rebuilds and deploys automatically — no `npm run deploy`
-needed.
+> **Note:** a custom GitHub Actions workflow (push-to-publish) was intentionally *not* used —
+> custom Actions runs are restricted on this account, while the built-in branch deployment is free
+> and reliable. `npm run deploy` is the supported path. (If true `git push`-to-publish is ever
+> wanted, deploy the same build to Cloudflare Pages or Netlify instead.)
 
 ## Local development
 
