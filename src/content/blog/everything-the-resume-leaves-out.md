@@ -112,6 +112,24 @@ got it all wrong, whether all that building was effort I should have spent on so
 smarter. I don't have a clean answer. Maybe there isn't one. But I don't think I could have lived
 any other way — and I'm slowly learning to let that be enough.
 
+## The shine in the desert
+
+The truth is, the fire started early — long before any keyboard. As a kid I was forever
+"inventing" things, taking the world apart just to see what was inside. I blew out the house fuse
+more than once. I earned myself a proper electric shock or two along the way. None of it scared me
+off; if anything, those little jolts felt like the world talking back.
+
+When software arrived, that same fire found a cleaner outlet — and it grew into something bigger.
+A quiet, almost embarrassing conviction that I was going to build something that *mattered*. That
+I'd be the next Steve Jobs, the next Bill Gates. That I was, somehow, **special**.
+
+I'm old enough now to feel that certainty slowly winding down, the way a battery does. The dream
+is quieter than it once was. But it hasn't gone out — there's still a shine out there somewhere, a
+glint on the horizon like light coming off desert sand, and I still find myself walking toward it.
+And underneath all the grand ambition sits a plainer truth I've never doubted: I'm good at solving
+problems. I can usually find a way through — and often it's an *unconventional* one, a door nobody
+else thought to try. That part has never dimmed. Maybe that's the real fire. Maybe it always was.
+
 ## Here, now
 
 And that brings me to **2026**, writing this down at last.
