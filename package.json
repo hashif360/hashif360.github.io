@@ -8,7 +8,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && gh-pages -d dist -t -m \"Deploy site\""
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.6",
