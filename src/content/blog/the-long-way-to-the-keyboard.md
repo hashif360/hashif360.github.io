@@ -42,8 +42,8 @@ So I started building.
 
 My first "websites" were held together on **webs.com** and **weebly.com** — drag-and-drop
 builders that let a teenager in Jeddah publish something to the actual internet. Looking back
-they were rough, but that wasn't the point. The point was that I made a thing, and other people
-could open it. That feeling — *this exists now because I made it* — is the same feeling that
+they were rough — and they've long since vanished from the web — but that wasn't the point. The
+point was that I made a thing, and other people could open it. That feeling — *this exists now because I made it* — is the same feeling that
 still gets me out of bed to write code today. It hasn't aged a day.
 
 From websites I wandered into games, tinkering with **3DRad** to build small, janky, wonderful
@@ -68,7 +68,11 @@ had — in the projects I built on the side.
 In my second year of college, I shipped something that actually mattered to people around me:
 **CBatch**, an Android app for my batch. It pulled together the boring-but-essential stuff —
 the syllabus, the timetable, previous years' question papers — into one place students could
-just *open*. Alongside it I kept making small games, the same way I always had.
+just *open*. The
+[APK still works if you want to poke at it](https://dl.dropbox.com/s/c7tomxrd63l8pqh/cbatch.apk?dl=0).
+
+Alongside it I kept making small games, the same way I always had — [here's one of
+them](https://drive.google.com/file/d/1tsxr0Z0-iTbZ6FJGf8L-V3M-aqWaiCd0/view?usp=sharing).
 
 CBatch wasn't going to change the world. But watching classmates actually use something I'd
 built to make their week a little easier — that closed a loop I'd first felt years earlier on
