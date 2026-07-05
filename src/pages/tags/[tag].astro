@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { sortPosts } from '../../utils';
+
+export async function getStaticPaths() {
+  const posts = sortPosts(await getCollection('blog'));
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag, posts: posts.filter((p) => p.data.tags.includes(tag)) },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`#${tag}`} description={`Posts tagged “${tag}”.`}>
+  <section class="wrap tagpage">
+    <header class="head" data-reveal>
+      <p class="eyebrow">Tagged</p>
+      <h1>#{tag}</h1>
+      <p class="sub">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+    </header>
+    <div class="list">
+      {posts.map((post, i) => <PostCard post={post} index={i} />)}
+    </div>
+    <p class="back"><a href="/" class="link">← All writing</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .tagpage {
+    padding-block: clamp(3.5rem, 9vw, 6rem) 0;
+  }
+  .head {
+    margin-bottom: 1.5rem;
+  }
+  .head .eyebrow {
+    margin-bottom: 1rem;
+  }
+  .head h1 {
+    font-size: var(--step-4);
+    margin: 0 0 0.3rem;
+  }
+  .sub {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+  .back {
+    margin-top: 2.5rem;
+  }
+</style>

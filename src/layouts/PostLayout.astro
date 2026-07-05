@@ -1,0 +1,249 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { formatDate, isoDate, readingTime } from '../utils';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  prev?: { id: string; title: string } | null;
+  next?: { id: string; title: string } | null;
+}
+
+const { post, prev, next } = Astro.props;
+const { title, description, pubDate, updatedDate, tags } = post.data;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={pubDate}
+>
+  <article class="wrap post">
+    <header class="post-head" data-reveal>
+      <div class="meta">
+        <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>{readingTime(post.body)}</span>
+        {updatedDate && <span class="updated">· updated {formatDate(updatedDate)}</span>}
+      </div>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+      {
+        tags.length > 0 && (
+          <ul class="tags">
+            {tags.map((t) => (
+              <li><a href={`/tags/${t}/`} class="tag">{t}</a></li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <div class="prose body" data-reveal>
+      <slot />
+    </div>
+
+    <nav class="post-nav" aria-label="More posts">
+      {
+        prev ? (
+          <a href={`/blog/${prev.id}/`} class="pn prev">
+            <span class="pn-label">← Previous</span>
+            <span class="pn-title">{prev.title}</span>
+          </a>
+        ) : <span />
+      }
+      {
+        next ? (
+          <a href={`/blog/${next.id}/`} class="pn next">
+            <span class="pn-label">Next →</span>
+            <span class="pn-title">{next.title}</span>
+          </a>
+        ) : <span />
+      }
+    </nav>
+
+    <p class="back"><a href="/" class="link">← All writing</a></p>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-block: clamp(3rem, 8vw, 6rem) 0;
+  }
+  .post-head {
+    max-width: var(--measure);
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-bottom: 1.3rem;
+  }
+  .dot {
+    color: var(--line-strong);
+  }
+  .post-head h1 {
+    font-size: var(--step-4);
+    margin-bottom: 0.6rem;
+    text-wrap: balance;
+  }
+  .lede {
+    font-family: var(--font-serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 44ch;
+    margin: 0 auto 1.5rem;
+    text-wrap: balance;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* ---- Long-form prose ---- */
+  .body {
+    margin-inline: auto;
+    font-size: var(--step-0);
+  }
+  .body :global(h2) {
+    font-size: var(--step-2);
+    margin: 2.6rem 0 0.9rem;
+  }
+  .body :global(h3) {
+    font-size: var(--step-1);
+    margin: 2rem 0 0.7rem;
+  }
+  .body :global(a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    transition: text-decoration-color 0.25s var(--ease);
+  }
+  .body :global(a:hover) {
+    text-decoration-color: var(--accent);
+  }
+  .body :global(blockquote) {
+    margin: 2rem 0;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    border-left: 2px solid var(--accent);
+    font-family: var(--font-serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .body :global(blockquote p:last-child) {
+    margin-bottom: 0;
+  }
+  .body :global(img) {
+    border-radius: var(--radius);
+    margin: 2rem auto;
+    border: 1px solid var(--line);
+  }
+  .body :global(hr) {
+    width: 40%;
+    margin: 3rem auto;
+  }
+  .body :global(ul),
+  .body :global(ol) {
+    padding-left: 1.3rem;
+    margin: 0 0 1.4em;
+  }
+  .body :global(li) {
+    margin-bottom: 0.5em;
+  }
+  .body :global(li::marker) {
+    color: var(--accent);
+  }
+  .body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.87em;
+    background: var(--code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+  .body :global(pre) {
+    padding: 1.2rem 1.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    overflow-x: auto;
+    margin: 1.8rem 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .body :global(pre code) {
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+  }
+  /* Shiki dual-theme swap */
+  :global(html[data-theme='dark']) .body :global(.astro-code),
+  :global(html[data-theme='dark']) .body :global(.astro-code span) {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+
+  /* ---- Post nav ---- */
+  .post-nav {
+    max-width: var(--measure);
+    margin: 4rem auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .pn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .pn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .pn.next {
+    text-align: right;
+  }
+  .pn-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+  }
+  .pn-title {
+    font-family: var(--font-serif);
+    color: var(--ink);
+  }
+  .back {
+    max-width: var(--measure);
+    margin: 2.5rem auto 0;
+    text-align: center;
+  }
+  @media (max-width: 560px) {
+    .post-nav {
+      grid-template-columns: 1fr;
+    }
+    .pn.next {
+      text-align: left;
+    }
+  }
+</style>

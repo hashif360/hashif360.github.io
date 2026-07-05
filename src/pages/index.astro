@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE, PROJECTS } from '../consts';
+import { sortPosts } from '../utils';
+
+const posts = sortPosts(await getCollection('blog'));
+---
+
+<BaseLayout title={SITE.title} description={SITE.description}>
+  <!-- Hero -->
+  <section class="hero wrap">
+    <p class="eyebrow" data-reveal>Developer · Builder</p>
+    <h1 class="display" data-reveal style="--reveal-delay:80ms">
+      Hi, I'm Hashif&nbsp;Habeeb.
+      <span class="accent">I build things<br />and write about it.</span>
+    </h1>
+    <p class="intro" data-reveal style="--reveal-delay:180ms">
+      I'm a developer and the maker of
+      {
+        PROJECTS.map((p, i) => (
+          <>
+            <a href={p.href} class="link proj">{p.name}</a>{
+              i < PROJECTS.length - 2 ? ', ' : i === PROJECTS.length - 2 ? ' and ' : '.'
+            }
+          </>
+        ))
+      }
+      This is where I think out loud about shipping software, the craft, and the messy middle.
+    </p>
+    <div class="hero-cta" data-reveal style="--reveal-delay:260ms">
+      <a href="#writing" class="btn">Read the writing</a>
+      <a href="/about" class="link">More about me →</a>
+    </div>
+  </section>
+
+  <div class="rule wrap"><span></span></div>
+
+  <!-- Writing list -->
+  <section id="writing" class="writing wrap">
+    <div class="sec-head" data-reveal>
+      <h2>Writing</h2>
+      <span class="count">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</span>
+    </div>
+
+    {
+      posts.length === 0 ? (
+        <p class="empty">No posts yet — the first one is on its way.</p>
+      ) : (
+        <div class="list">
+          {posts.map((post, i) => <PostCard post={post} index={i} />)}
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(4rem, 12vw, 9rem) clamp(2.5rem, 6vw, 4rem);
+  }
+  .eyebrow {
+    margin-bottom: 1.4rem;
+  }
+  .display {
+    font-size: var(--step-5);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.6rem;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+  .display .accent {
+    display: block;
+    color: var(--ink-soft);
+  }
+  .display .accent::selection {
+    color: var(--accent);
+  }
+  .intro {
+    font-size: var(--step-1);
+    max-width: 52ch;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .intro .proj {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2.2rem;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.95rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 100px;
+    transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .rule {
+    padding-block: 0;
+  }
+  .rule span {
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent 60%);
+  }
+
+  .writing {
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .sec-head h2 {
+    font-size: var(--step-2);
+    margin: 0;
+  }
+  .count {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .empty {
+    color: var(--ink-faint);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--step-1);
+    padding: 2rem 0;
+  }
+</style>

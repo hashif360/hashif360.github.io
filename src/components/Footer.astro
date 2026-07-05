@@ -1,0 +1,62 @@
+---
+import { SITE, SOCIALS } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap inner">
+    <p class="colophon">
+      <span class="sig">{SITE.title}</span>
+      <span class="dim">— written &amp; built in the open.</span>
+    </p>
+    <nav class="socials" aria-label="Social">
+      {
+        SOCIALS.map((s) => (
+          <a class="link" href={s.href} rel="me noopener">
+            {s.label}
+          </a>
+        ))
+      }
+    </nav>
+    <p class="copy">© {year} {SITE.author}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 6rem;
+    border-top: 1px solid var(--line);
+    padding-block: 2.5rem 3.5rem;
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+  }
+  .colophon {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+  }
+  .sig {
+    color: var(--ink);
+  }
+  .dim {
+    color: var(--ink-faint);
+  }
+  .socials {
+    display: flex;
+    gap: 1.4rem;
+    font-size: 0.9rem;
+  }
+  .copy {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    width: 100%;
+    padding-top: 0.5rem;
+  }
+</style>

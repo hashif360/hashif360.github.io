@@ -1,0 +1,101 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, isoDate, readingTime } from '../utils';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  index?: number;
+}
+
+const { post, index = 0 } = Astro.props;
+const { title, description, pubDate, tags } = post.data;
+const href = `/blog/${post.id}/`;
+---
+
+<article class="card" data-reveal style={`--reveal-delay:${Math.min(index * 70, 350)}ms`}>
+  <a href={href} class="hit" aria-label={title}></a>
+  <div class="meta">
+    <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
+    <span class="dot" aria-hidden="true">·</span>
+    <span>{readingTime(post.body)}</span>
+  </div>
+  <h2 class="title">{title}</h2>
+  <p class="desc">{description}</p>
+  {
+    tags.length > 0 && (
+      <ul class="tags">
+        {tags.slice(0, 3).map((t) => (
+          <li class="tag">{t}</li>
+        ))}
+      </ul>
+    )
+  }
+  <span class="arrow" aria-hidden="true">Read →</span>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .card:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .hit {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint);
+    margin-bottom: 0.7rem;
+  }
+  .dot {
+    color: var(--line-strong);
+  }
+  .title {
+    font-size: var(--step-2);
+    margin: 0 0 0.4rem;
+    transition: color 0.3s var(--ease);
+    max-width: 30ch;
+  }
+  .card:hover .title {
+    color: var(--accent);
+  }
+  .desc {
+    margin: 0 0 1rem;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .arrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), color 0.3s var(--ease);
+    display: inline-block;
+  }
+  .card:hover .arrow {
+    opacity: 1;
+    transform: none;
+    color: var(--accent);
+  }
+</style>

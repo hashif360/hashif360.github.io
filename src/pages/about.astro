@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, PROJECTS, SOCIALS } from '../consts';
+---
+
+<BaseLayout title="About" description={`About ${SITE.author} — developer and builder.`}>
+  <section class="wrap about">
+    <header class="head" data-reveal>
+      <p class="eyebrow">About</p>
+      <h1>Hashif Habeeb</h1>
+    </header>
+
+    <div class="prose bio" data-reveal style="--reveal-delay:100ms">
+      <p class="lede">
+        I'm a developer who likes to build the whole thing — from the database to the
+        pixel — and ship it to real people.
+      </p>
+      <p>
+        Over the years I've started and shipped a handful of products, each one teaching me
+        something new about design, distribution, and the unglamorous work that turns an idea
+        into something people actually use. This blog is where I write those lessons down before
+        I forget them.
+      </p>
+      <p>
+        I care about fast software, honest interfaces, and shipping. When I'm not building, I'm
+        usually reading about how other people build.
+      </p>
+    </div>
+
+    <div class="things" data-reveal style="--reveal-delay:180ms">
+      <h2>Things I've made</h2>
+      <ul class="proj-list">
+        {
+          PROJECTS.map((p) => (
+            <li class="proj">
+              <a href={p.href} class="proj-name link">{p.name}</a>
+              <span class="proj-blurb">{p.blurb}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="connect" data-reveal style="--reveal-delay:240ms">
+      <h2>Elsewhere</h2>
+      <ul class="social-list">
+        {
+          SOCIALS.map((s) => (
+            <li>
+              <a href={s.href} class="link" rel="me noopener">{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about {
+    padding-block: clamp(3.5rem, 9vw, 7rem) 0;
+    max-width: 60rem;
+  }
+  .head {
+    margin-bottom: 2.5rem;
+  }
+  .head .eyebrow {
+    margin-bottom: 1rem;
+  }
+  .head h1 {
+    font-size: var(--step-4);
+    margin: 0;
+  }
+  .bio {
+    max-width: var(--measure);
+  }
+  .lede {
+    font-family: var(--font-serif);
+    font-size: var(--step-2);
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    text-wrap: balance;
+  }
+  .bio p:not(.lede) {
+    color: var(--ink-soft);
+    font-size: var(--step-1);
+  }
+  .things,
+  .connect {
+    margin-top: 3.5rem;
+  }
+  .things h2,
+  .connect h2 {
+    font-size: var(--step-1);
+    margin-bottom: 1.2rem;
+    color: var(--ink-faint);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+  .proj-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+  .proj {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 1rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .proj:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .proj-name {
+    font-family: var(--font-serif);
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  .proj-blurb {
+    color: var(--ink-soft);
+  }
+  .social-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: var(--step-1);
+  }
+</style>
