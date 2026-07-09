@@ -11,7 +11,7 @@ export const SITE = {
 
 // Shown in the hero and about page. Add/remove freely.
 export const PROJECTS = [
-  { name: 'DoosraBox', href: 'https://doosrabox.com', blurb: 'Instant, disposable cloud computers.' },
+  { name: 'DoosraBox', href: 'https://doosrabox.com', blurb: 'Your second computer, with AI that works while you sleep.' },
   { name: 'Interviewable', href: 'https://interviewable.com', blurb: 'AI mock interviews that actually prep you.' },
   { name: 'SayWhen', href: 'https://saywhen.me', blurb: 'Calendly, Linktree and a kanban board in one.' },
   { name: 'Lesson21', href: 'https://lesson21.com', blurb: 'Bite-sized learning that sticks.' },
