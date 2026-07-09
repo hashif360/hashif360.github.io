@@ -11,6 +11,9 @@ interface Props {
   image?: string;
   type?: 'website' | 'article';
   publishedTime?: Date;
+  updatedTime?: Date;
+  authorName?: string;
+  noindex?: boolean;
 }
 
 const props = Astro.props;
