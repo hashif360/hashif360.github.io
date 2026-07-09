@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hashif360.github.io/sitemap-index.xml
